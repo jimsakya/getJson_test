@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>WeUI</title>
+    <link rel="stylesheet" href="../style/weui.css"/>
+  
+</head>
+<body ontouchstart>
+   
+
+    
+
+  
+ 
+
+
+		
+
+		
+		      <div class="weui-flex">
+            <div class="weui-flex__item"><div class="placeholder">  <input type="button" id="btn" value="全选" onclick="Checkall('checkbox1')"/>weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+        </div>
+      <div class="weui-flex">
+            <div class="weui-flex__item"><div class="placeholder"> <input type="checkbox"  name="checkbox1" id="s11" checked="checked">weui</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui</div></div>
+        </div>
+
+
+      <div class="weui-flex">
+            <div class="weui-flex__item"><div class="placeholder"><input type="checkbox" name="checkbox1"  id="s12">weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+        </div>
+		    
+			<div class="weui-flex">
+            <div class="weui-flex__item"><div class="placeholder"><input type="checkbox" name="checkbox1"  id="s13">weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+            <div class="weui-flex__item"><div class="placeholder">weui1</div></div>
+        </div>
+
+	
+
+
+<!--"dog":[
+		{"name":"Rufus","breed":"labrador","count":1,"twoFeet":false},
+		{"name":"Marty","breed":"whippet","count":1,"twoFeet":false}
+	]-->
+     
+
+   
+   <div id="title"></div>
+   <div id="content"></div>
+   <div id="mapinfo"></div>
+   <div id="info"></div>
+     
+  
+ <script src="../js/jquery-1.9.1.js"></script>
+
+<script>
+var flag=0;
+function Checkall(XelementName)
+{
+    var checkboxes=document.getElementsByName(XelementName);
+    for(var i=0;i<checkboxes.length;i++)
+    {
+        if (flag%2==0)    
+            checkboxes[i].checked=true;
+        if (flag%2==1)
+            checkboxes[i].checked=false;
+       <!-- if (flag%3==2) checkboxes[i].checked=!checkboxes[i].checked; -->
+			
+    }
+    flag++;
+}
+
+</script>
+
+
+ <script type="text/javascript">
+  $.getJSON('../loadInfo.json',{}, function(data) {
+    $("#title").append(data.title+"<hr/>");
+    $("#content").append(data.content+"<hr/>");
+    //jquery解析map数据
+    $.each(data.infomap,function(key,value){
+      $("#mapinfo").append(key+"----"+value+"<br/><hr/>");
+    });
+    //解析数组
+    $.each(data.comments, function(i, item) {
+      $("#info").append(
+          "<div>" + item.id + "</div>" + 
+          "<div>" + item.nickname  + "</div>" +
+          "<div>" + item.content + "</div><hr/>");
+    });
+    });
+ </script>
+
+   
+</body>
+</html>

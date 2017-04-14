@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<head>
+<script>
+var flag=0;
+function Checkall(XelementName)
+{
+    var checkboxes=document.getElementsByName(XelementName);
+    for(var i=0;i<checkboxes.length;i++)
+    {
+        if (flag%2==0)    
+            checkboxes[i].checked=true;
+        if (flag%2==1)
+            checkboxes[i].checked=false;
+       <!-- if (flag%3==2) checkboxes[i].checked=!checkboxes[i].checked; -->
+			
+    }
+    flag++;
+}
+</script>
+</head>
+<body>
+    <input type="button" id="btn" value="全选/全不选" onclick="Checkall('checkbox1')"/>
+    <input type="checkbox" name="checkbox1"/>a
+    <input type="checkbox" name="checkbox1"/>b
+    <input type="checkbox" name="checkbox1"/>c
+    <input type="checkbox" name="checkbox1"/>d
+</body>
+</html>
